@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BestDealApp", "BestDealApp\BestDealApp.csproj", "{75B9CE30-0891-4ED8-8ABB-6A4AA6D0053D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BestDealApp", "BestDealApp\BestDealApp.csproj", "{75B9CE30-0891-4ED8-8ABB-6A4AA6D0053D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BestDealRazor_Temp", "BestDealRazor_Temp\BestDealRazor_Temp.csproj", "{19C88060-CA44-40C2-9B13-FADF40940B8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{75B9CE30-0891-4ED8-8ABB-6A4AA6D0053D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75B9CE30-0891-4ED8-8ABB-6A4AA6D0053D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75B9CE30-0891-4ED8-8ABB-6A4AA6D0053D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19C88060-CA44-40C2-9B13-FADF40940B8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19C88060-CA44-40C2-9B13-FADF40940B8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19C88060-CA44-40C2-9B13-FADF40940B8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19C88060-CA44-40C2-9B13-FADF40940B8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
