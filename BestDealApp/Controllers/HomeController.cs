@@ -1,4 +1,4 @@
-using BestDealApp.Models;
+using BestDeal.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
