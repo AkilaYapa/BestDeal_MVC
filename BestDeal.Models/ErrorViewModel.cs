@@ -1,4 +1,4 @@
-namespace BestDealApp.Models
+namespace BestDeal.Models
 {
     public class ErrorViewModel
     {
