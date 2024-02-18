@@ -1,7 +1,7 @@
-﻿using BestDealApp.Models;
+﻿using BestDeal.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace BestDealApp.Data
+namespace BestDeal.DataAccess.Data
 {
     public class ApplicationDbContext : DbContext
     {

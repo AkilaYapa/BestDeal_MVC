@@ -1,4 +1,4 @@
-using BestDealApp.Data;
+using BestDeal.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

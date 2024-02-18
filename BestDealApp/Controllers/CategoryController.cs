@@ -1,5 +1,5 @@
-﻿using BestDealApp.Data;
-using BestDealApp.Models;
+﻿using BestDeal.DataAccess.Data;
+using BestDeal.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BestDealApp.Controllers
