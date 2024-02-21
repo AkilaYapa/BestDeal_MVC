@@ -1,20 +1,23 @@
 ﻿using BestDeal.DataAccess.Data;
+using BestDeal.DataAccess.Repository;
+using BestDeal.DataAccess.Repository.IRepository;
 using BestDeal.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BestDealApp.Controllers
+namespace BestDealApp.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
-        private readonly ApplicationDbContext _db;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public CategoryController(ApplicationDbContext db)
+        public CategoryController(IUnitOfWork unitOfWork)
         {
-            _db = db;
+            _unitOfWork = unitOfWork;
         }
         public IActionResult Index()
         {
-            List<Category> objCategoryList = _db.Categories.ToList();
+            List<Category> objCategoryList = _unitOfWork.Category.GetAll().ToList();
             return View(objCategoryList);
         }
         public IActionResult Create()
@@ -30,8 +33,8 @@ namespace BestDealApp.Controllers
             }
             if (ModelState.IsValid)
             {
-                _db.Categories.Add(obj);
-                _db.SaveChanges();
+                _unitOfWork.Category.Add(obj);
+                _unitOfWork.Save();
                 TempData["success"] = "Category created successfully";
                 return RedirectToAction("Index");
             }
@@ -39,11 +42,11 @@ namespace BestDealApp.Controllers
         }
         public IActionResult Edit(int? id)
         {
-            if(id == null || id ==0)
+            if (id == null || id == 0)
             {
                 return NotFound();
             }
-            Category? categoryFromDb = _db.Categories.Find(id);   // only works on primary key
+            Category? categoryFromDb = _unitOfWork.Category.Get(u => u.CategoryId == id);   // only works on primary key
             //Category? categoryFromDb1 = _db.Categories.FirstOrDefault(u => u.CategoryId == id);  // work on any property (Name, Displayorder)
             //Category? categoryFromDb2 = _db.Categories.Where(u=> u.CategoryId == id).FirstOrDefault();  // When there are some filterings to do
             if (categoryFromDb == null)
@@ -58,8 +61,8 @@ namespace BestDealApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Categories.Update(obj);
-                _db.SaveChanges();
+                _unitOfWork.Category.Update(obj);
+                _unitOfWork.Save();
                 TempData["success"] = "Category updated successfully";
                 return RedirectToAction("Index");
             }
@@ -72,7 +75,7 @@ namespace BestDealApp.Controllers
             {
                 return NotFound();
             }
-            Category? categoryFromDb = _db.Categories.Find(id);
+            Category? categoryFromDb = _unitOfWork.Category.Get(u => u.CategoryId == id);
             if (categoryFromDb == null)
             {
                 return NotFound();
@@ -83,13 +86,13 @@ namespace BestDealApp.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePost(int? id)
         {
-            Category? obj = _db.Categories.Find(id);
+            Category? obj = _unitOfWork.Category.Get(u => u.CategoryId == id);
             if (obj == null)
             {
                 return NotFound();
             }
-            _db.Categories.Remove(obj);
-            _db.SaveChanges();
+            _unitOfWork.Category.Remove(obj);
+            _unitOfWork.Save();
             TempData["success"] = "Category deleted successfully";
             return RedirectToAction("Index");
         }
